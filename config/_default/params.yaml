@@ -36,15 +36,15 @@ directions: My office is on the third floor, Room 372
 office_hours:
   - 'TBA'
 appointment_url: 'https://calendly.com/g-ljubownikow'
-contact_links:
+# contact_links:
 #  - icon: twitter
 #    icon_pack: fab
 #    name: DM Me
 #    link: 'https://twitter.com/Twitter'
-  - icon: skype
-    icon_pack: fab
-    name: Skype Me
-    link: 'skype:echo123?call'
+#  - icon: skype
+#    icon_pack: fab
+#    name: Skype Me
+#    link: 'skype:echo123?call'
 #  - icon: keybase
 #    icon_pack: fab
 #    name: Chat on Keybase
