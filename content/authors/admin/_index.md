@@ -18,23 +18,27 @@ bio: My research interests are at the intersection of strategic management and o
 
 # Interests to show in About widget
 interests:
-- Strategic management
-- Multimarket contact
+- Competitive interdependencies
+- Competitive dynamics
+- Diversification
 - Acquisitions
 - Alliances
 
 # Education to show in About widget
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
+  - course: PhD in International Business
+    institution: University of Auckland
+    year: 2015
+  - course: Master of Commerce (First Class Honours)
+    institution: University of Auckland
+    year: 2010
+  - course: Postgraduate Diploma of Commerce (Distinction)
+    institution: University of Auckland
     year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: Bachelor of Business Administration
+    institution: University of Flensburg
+    year: 2007
 
 # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
@@ -44,18 +48,21 @@ social:
 - icon: envelope
   icon_pack: fas
   link: '/#contact'
-- icon: twitter
-  icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
-- icon: graduation-cap  # Alternatively, use `google-scholar` icon from `ai` icon pack
-  icon_pack: fas
+- icon: google-scholar  
+  icon_pack: ai
   link: https://scholar.google.co.nz/citations?user=2S7v3a4AAAAJ&hl=en
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/grlju
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/
+  link: www.linkedin.com/in/grigorij-ljubownikow
+- icon: academia
+  icon_pack: ai
+  link: https://www.business.auckland.ac.nz/people/glju001
+- icon: orcid
+  icon_pack: ai
+  link: http://orcid.org/0000-0002-0335-6286
 
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.toml`,
@@ -71,8 +78,8 @@ email: ""
 highlight_name: true
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Grigorij Ljubownikow (PhD, Auckland) is a lecturer of Strategy at the University of Auckland Business School, University of Auckland.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+His research interests are at the intersection of strategic management and organizational theory, his research focuses on how competition in general and competitive interdependencies in particular influence firm behaviors, such as acquisitions and alliances.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
