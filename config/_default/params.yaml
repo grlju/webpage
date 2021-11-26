@@ -37,10 +37,10 @@ office_hours:
   - 'TBA'
 appointment_url: 'https://calendly.com'
 contact_links:
-  - icon: twitter
-    icon_pack: fab
-    name: DM Me
-    link: 'https://twitter.com/Twitter'
+#  - icon: twitter
+#    icon_pack: fab
+#    name: DM Me
+#    link: 'https://twitter.com/Twitter'
   - icon: skype
     icon_pack: fab
     name: Skype Me
