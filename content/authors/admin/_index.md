@@ -49,7 +49,7 @@ social:
   link: https://twitter.com/GeorgeCushen
 - icon: graduation-cap  # Alternatively, use `google-scholar` icon from `ai` icon pack
   icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.co.nz/citations?user=2S7v3a4AAAAJ&hl=en
 - icon: github
   icon_pack: fab
   link: https://github.com/gcushen
