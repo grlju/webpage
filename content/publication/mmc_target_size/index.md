@@ -1,5 +1,5 @@
 ---
-title: "An example conference paper"
+title: "Multimarket contact and target size: The moderating effect of market concentration and location"
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
@@ -18,7 +18,7 @@ date: "2021-26-04T00:00:00Z"
 doi: "10.1177/14761270211009745"
 
 # Schedule page publish date (NOT publication's date).
-publishDate: "2017-01-01T00:00:00Z"
+publishDate: "2021-26-04T00:00:00Z"
 
 # Publication type.
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
@@ -57,10 +57,10 @@ url_video: ''
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
-# image:
-#  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/pLCdAaMFLTE)'
-#  focal_point: ""
-#  preview_only: false
+image:
+  caption: 'Multimarket contact among large bank holding companies (1995–2014).'
+  focal_point: ""
+  preview_only: false
 
 # Associated Projects (optional).
 #   Associate this publication with one or more of your projects.
@@ -68,7 +68,7 @@ url_video: ''
 #   E.g. `internal-project` references `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
 projects:
-- []
+- content/project/rmmc
 
 # Slides (optional).
 #   Associate this publication with Markdown slides.
