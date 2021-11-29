@@ -1,3 +1,54 @@
+---
+
+title: rmmc subtitle: An R package for calculating multimarket contact
+
+# Summary for listings and search engines
+
+summary: “Over the last few months I have worked on creating a package
+that can help with calculating various measures of multimarket contact.
+This is a short post to illustrate how it can be used.”
+
+# Link this post with a project
+
+projects: - content/project/rmmc
+
+# Date published
+
+date: “2021-11-29T00:00:00Z”
+
+# Date updated
+
+lastmod: “2021-11-29T00:00:00Z”
+
+# Is this an unpublished draft?
+
+draft: false
+
+# Show this page in the Featured widget?
+
+featured: false
+
+# Featured image
+
+# Place an image named `featured.jpg/png` in this page’s folder and customize its options here.
+
+# image:
+
+# caption: ‘Image credit: [**Unsplash**](https://unsplash.com/photos/CpkOjOcXdUY)’
+
+# focal\_point: ""
+
+# placement: 2
+
+# preview\_only: false
+
+authors: - admin
+
+tags: - multimarket contact
+
+categories: ""
+---
+
 Multimarket contact is the situation when firms meet in more than one
 market. To capture this situation in empirical research a number of
 different measures have been proposed. The R package `rmmc` can be used
@@ -10,26 +61,20 @@ used.
 First, install start by installing the package. Currently is only
 available on github.
 
-``` r
-library(devtools)
-```
+    library(devtools)
 
     ## Loading required package: usethis
 
-``` r
-install_github("grlju/rmmc")
-```
+    install_github("grlju/rmmc")
 
     ## Skipping install of 'rmmc' from a github remote, the SHA1 (d59f6245) has not changed since last install.
     ##   Use `force = TRUE` to force installation
 
 Let’s load some example data provide with the package
 
-``` r
-library(rmmc)
-data <- rmmc:::data
-head(data)
-```
+    library(rmmc)
+    data <- rmmc:::data
+    head(data)
 
     ##    year    id m1 m2 m3 m4
     ## 1: 2000 firm1  1  1  1  0
@@ -54,10 +99,8 @@ we can think that multimarket contact exists and is important. Let’s
 focus on the dyadic level first. That is, the level of contact between
 two different entities (i.e. firms in our example).
 
-``` r
-count_dyad <- mmc_count(data, firm_col = "id", date_col = "year", level = "dyad", market_cols = c("m1", "m2", "m3", "m4"))
-head(count_dyad)
-```
+    count_dyad <- mmc_count(data, firm_col = "id", date_col = "year", level = "dyad", market_cols = c("m1", "m2", "m3", "m4"))
+    head(count_dyad)
 
     ##    year    id N_i  id.y N_j mmc_ij
     ## 1: 2000 firm1   3 firm2   1      0
