@@ -34,8 +34,8 @@ experience:
     company: University of Auckland
     company_url: 'https://www.auckland.ac.nz/en.html'
     location: Auckland
-    date_start: '2015-05-01'
-    date_end: '2017-31-12'
+    date_start: '2015-01-05'
+    date_end: '2017-12-31'
 #    description:
 
 design:
