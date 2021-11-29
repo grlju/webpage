@@ -1,6 +1,6 @@
 ---
 title: Multimarket contact measures
-summary: An example of using the in-built project page.
+summary: An R package for calculating multimarket contact.
 tags:
 - Competition
 date: "2021-11-27T00:00:00Z"
