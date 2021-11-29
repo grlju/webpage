@@ -1,52 +1,43 @@
 ---
-
-title: rmmc subtitle: An R package for calculating multimarket contact
+title: rmmc
+subtitle: An R package for calculating multimarket contact
 
 # Summary for listings and search engines
-
-summary: “Over the last few months I have worked on creating a package
-that can help with calculating various measures of multimarket contact.
-This is a short post to illustrate how it can be used.”
+summary: "Over the last few months I have worked on creating a package that can help with calculating various measures of multimarket contact. This is a short post to illustrate how it can be used."
 
 # Link this post with a project
-
-projects: - content/project/rmmc
+projects:
+- content/project/rmmc
 
 # Date published
-
-date: “2021-11-29T00:00:00Z”
+date: "2021-11-29T00:00:00Z"
 
 # Date updated
-
-lastmod: “2021-11-29T00:00:00Z”
+lastmod: "2021-11-29T00:00:00Z"
 
 # Is this an unpublished draft?
-
 draft: false
 
 # Show this page in the Featured widget?
-
 featured: false
 
 # Featured image
-
-# Place an image named `featured.jpg/png` in this page’s folder and customize its options here.
-
+# Place an image named `featured.jpg/png` in this page's folder and customize its options here.
 # image:
+#  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/CpkOjOcXdUY)'
+#  focal_point: ""
+#  placement: 2
+#  preview_only: false
 
-# caption: ‘Image credit: [**Unsplash**](https://unsplash.com/photos/CpkOjOcXdUY)’
+authors:
+- admin
 
-# focal\_point: ""
 
-# placement: 2
-
-# preview\_only: false
-
-authors: - admin
-
-tags: - multimarket contact
+tags:
+- multimarket contact
 
 categories: ""
+
 ---
 
 Multimarket contact is the situation when firms meet in more than one
@@ -61,20 +52,23 @@ used.
 First, install start by installing the package. Currently is only
 available on github.
 
-    library(devtools)
+``` r
+library(devtools)
+```
 
     ## Loading required package: usethis
 
-    install_github("grlju/rmmc")
-
-    ## Skipping install of 'rmmc' from a github remote, the SHA1 (d59f6245) has not changed since last install.
-    ##   Use `force = TRUE` to force installation
+``` r
+install_github("grlju/rmmc")
+```
 
 Let’s load some example data provide with the package
 
-    library(rmmc)
-    data <- rmmc:::data
-    head(data)
+``` r
+library(rmmc)
+data <- rmmc:::data
+head(data)
+```
 
     ##    year    id m1 m2 m3 m4
     ## 1: 2000 firm1  1  1  1  0
@@ -99,8 +93,10 @@ we can think that multimarket contact exists and is important. Let’s
 focus on the dyadic level first. That is, the level of contact between
 two different entities (i.e. firms in our example).
 
-    count_dyad <- mmc_count(data, firm_col = "id", date_col = "year", level = "dyad", market_cols = c("m1", "m2", "m3", "m4"))
-    head(count_dyad)
+``` r
+count_dyad <- mmc_count(data, firm_col = "id", date_col = "year", level = "dyad", market_cols = c("m1", "m2", "m3", "m4"))
+head(count_dyad)
+```
 
     ##    year    id N_i  id.y N_j mmc_ij
     ## 1: 2000 firm1   3 firm2   1      0
