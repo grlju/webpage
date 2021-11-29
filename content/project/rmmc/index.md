@@ -2,7 +2,7 @@
 title: Multimarket contact measures
 summary: An R package for calculating multimarket contact.
 tags:
-- Competition
+- competition
 date: "2021-11-27T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
