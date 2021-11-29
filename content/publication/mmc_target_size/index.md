@@ -6,12 +6,13 @@ title: "An example conference paper"
 # and it will be replaced with their full name and linked to their profile.
 authors:
 - admin
-- Robert Ford
+- Mirko Benischke
+- Anna Nadolska
 
 # Author notes (optional)
-author_notes:
-- "Equal contribution"
-- "Equal contribution"
+#author_notes:
+#- "Equal contribution"
+#- "Equal contribution"
 
 date: "2021-26-04T00:00:00Z"
 doi: "10.1177/14761270211009745"
