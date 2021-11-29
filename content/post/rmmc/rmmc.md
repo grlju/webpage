@@ -37,7 +37,6 @@ tags:
 - multimarket contact
 
 categories: ""
-
 ---
 
 Multimarket contact is the situation when firms meet in more than one
@@ -78,12 +77,12 @@ head(data)
     ## 5: 2000 firm2  0  0  0  1
     ## 6: 2001 firm2  0  0  1  1
 
-The `data.table` (the package `data.table` package is a dependency) as
-information on three firms (firm1-firm3) across years (2000-2003) and
-four markets in which these firms have activities (m1-m4). This example
-dataset also illustrates the layout that the package expects. If there
-are multiple observations for each entity the data should be in long
-format.
+The `data.table` (the package `data.table` package is a dependency) has
+information on three firms (firm1-firm3) across three years (2000-2003)
+and four markets in which these firms have activities (m1-m4). This
+example dataset also illustrates the layout that the package expects. If
+there are multiple observations for each entity the data should be in
+long format.
 
 Calculating the multimarket contact between these firms can now easily
 be accomplished with the various functions.
