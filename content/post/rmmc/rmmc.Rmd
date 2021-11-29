@@ -43,10 +43,6 @@ output:
     variant: markdown_github
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 Multimarket contact is the situation when firms meet in more than one market. To capture this situation in empirical research a number of different measures have been proposed. The R package `rmmc` can be used as a central repository of functions that makes it easy to access the various functions that have been used. 
 
 This post provides a short illustration about how this package can be used. 
