@@ -19,10 +19,12 @@ bio: My research interests are at the intersection of strategic management and o
 # Interests to show in About widget
 interests:
 - Competitive interdependencies
+- Multimarket contact
 - Competitive dynamics
 - Diversification
 - Acquisitions
 - Alliances
+- Competition
 
 # Education to show in About widget
 education:
@@ -56,13 +58,19 @@ social:
   link: https://github.com/grlju
 - icon: linkedin
   icon_pack: fab
-  link: www.linkedin.com/in/grigorij-ljubownikow
+  link: https://www.linkedin.com/in/grigorij-ljubownikow
 - icon: academia
   icon_pack: ai
   link: https://www.business.auckland.ac.nz/people/glju001
 - icon: orcid
   icon_pack: ai
-  link: http://orcid.org/0000-0002-0335-6286
+  link: https://orcid.org/0000-0002-0335-6286
+- icon: researchgate
+  icon_pack: ai
+  link: https://www.researchgate.net/profile/Grigorij-Ljubownikow
+- icon: publons
+  icon_pack: ai
+  link: https://publons.com/researcher/1406853/grigorij-ljubownikow/
 
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.toml`,
