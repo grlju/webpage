@@ -4,10 +4,10 @@ authors:
 date: "2021-11-30T00:00:00Z"
 draft: false
 featured: false
-image: featured.jpg
+image: 
   placement: 2
   preview_only: false
-lastmod: November 30, 2021
+lastmod: "2021-11-30T00:00:00Z"
 projects:
 - content/project/knights
 summary: Matching the Corporate Knights to WRDS can be tricky. This is a
