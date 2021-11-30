@@ -4,7 +4,7 @@ authors:
 date: "2021-11-30T00:00:00Z"
 draft: false
 featured: false
-image:
+image: featured.jpg
   placement: 2
   preview_only: false
 lastmod: November 30, 2021
@@ -87,7 +87,7 @@ head(countries)
     ## 6:          Spain ESP
 
 ``` r
-# Merger countries back to the global100 data.table. 
+# Merger countries back to the global100 data.table.
 global100 <- countries[global100, on = "country"]
 ```
 
@@ -129,7 +129,7 @@ standardization steps to the Knights and the WRDS dataset
 global100[, company_name_stnd := str_replace(company_name, "\\([^\\)]+\\)", " ")]
 # convert to uppercase as WRDS names are in upper case
 global100[, company_name_stnd := toupper(company_name_stnd)]
-# remove special characters ()., 
+# remove special characters ().,
 global100[, company_name_stnd := str_remove_all(company_name_stnd, "\\(|\\)|\\.|\\,")]
 # replace quotation marks
 global100[, company_name_stnd := str_replace_all(company_name_stnd, "\"", " ")]
@@ -142,7 +142,7 @@ global100[, company_name_stnd := str_squish(company_name_stnd)]
 g_names[, company_name_stnd := str_replace(conm, "\\([^\\)]+\\)", " ")]
 # convert to uppercase as WRDS names are in upper case
 g_names[, company_name_stnd := toupper(company_name_stnd)]
-# remove special characters ()., 
+# remove special characters ().,
 g_names[, company_name_stnd := str_remove_all(company_name_stnd, "\\(|\\)|\\.|\\,")]
 # replace quotation marks
 g_names[, company_name_stnd := str_replace_all(company_name_stnd, "\"", " ")]
@@ -161,7 +161,7 @@ type <- readRDS("type.rda")
 # Knights
 # extract all entity types
 global100[, entity_type := list(str_extract_all(company_name_stnd, type))]
-# For some names multiple entity types are extracted (e.g. if the company name abbreviation matched and entity type), in this case use the last on as it is likely to be the actual abbreviation 
+# For some names multiple entity types are extracted (e.g. if the company name abbreviation matched and entity type), in this case use the last on as it is likely to be the actual abbreviation
 global100[, entity_type := sapply(entity_type, function(x) tail(x, 1))]
 # if not entity type is extracted it creates and empty character list, remove it
 global100[, entity_type1 := lapply(entity_type, unlist), by = 1:nrow(global100)][, entity_type := NULL]
@@ -175,7 +175,7 @@ global100[, entity_type := str_squish(entity_type)]
 # WRDS
 # extract all entity types
 g_names[, entity_type := list(str_extract_all(company_name_stnd, type))]
-# For some names multiple entity types are extracted (e.g. if the company name abbreviation matched and entity type), in this case use the last on as it is likely to be the actual abbreviation 
+# For some names multiple entity types are extracted (e.g. if the company name abbreviation matched and entity type), in this case use the last on as it is likely to be the actual abbreviation
 g_names[, entity_type := sapply(entity_type, function(x) tail(x, 1))]
 # if not entity type is extracted it creates and empty character list, remove it
 g_names[, entity_type1 := lapply(entity_type, unlist), by = 1:nrow(g_names)][, entity_type := NULL]
@@ -254,17 +254,17 @@ the web) to account for name changes/M&A, etc.
 
 ``` r
 # keep working on the unmatched
-# create data.table with those global names that have not been matched. This can be used as a look up table in the manual matching. Often names are too dissimilar for the computer but a human can easily see the match. 
+# create data.table with those global names that have not been matched. This can be used as a look up table in the manual matching. Often names are too dissimilar for the computer but a human can easily see the match.
 unmatched_g <- df1[!gvkey %in% matched[, gvkey]]
 
-# create data.table of the unmatched so one can systematically work through all of them. 
+# create data.table of the unmatched so one can systematically work through all of them.
 unmatched <- df2[!company_name_stnd %in% matched[, company_name_stnd]]
 
-# create data.table of with matched and unmatched so found matches can be updated there. 
+# create data.table of with matched and unmatched so found matches can be updated there.
 fullmatch <- matched[df2, on = intersect(names(df2), names(matched))]
 
 # Manual matching
-fullmatch[company_name_stnd == "AEROPORTS DE PARIS", gvkey := "278142"] 
+fullmatch[company_name_stnd == "AEROPORTS DE PARIS", gvkey := "278142"]
 fullmatch[company_name_stnd == "AUSTRALIA & NEW ZEALD BKG GRP", gvkey := "015889"]
 fullmatch[company_name_stnd == "BIOGEN IDEC", gvkey := "024468"]
 # BIOGEN IDEC changed name to BIOGEN Inc
@@ -310,7 +310,7 @@ fullmatch[company_name_stnd == "TIM HORTONS", gvkey := "022402"]
 global100 <- fullmatch[global100, on = intersect(names(fullmatch), names(global100))]
 ```
 
-And that is it! Now we have a link the [Corporate
+And that is it! Now we have linked the [Corporate
 Knights](https://www.corporateknights.com/rankings/global-100-rankings/)
 dataset to [WRDS](https://wrds-www.wharton.upenn.edu/) and we can use
 the gvkey identifier to obtain additional information about these
