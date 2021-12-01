@@ -4,7 +4,7 @@ authors:
 date: "2021-11-30T00:00:00Z"
 draft: false
 featured: false
-image: 
+image:
   placement: 2
   preview_only: false
 lastmod: "2021-11-30T00:00:00Z"
@@ -189,7 +189,7 @@ g_names[, entity_type := str_squish(entity_type)]
 
 Third, we converted elements of names to standard abbreviations taken
 from CRSP abbreviations (I also have a post about how to get these
-\[here\])
+\[here\](content/post/crspabb))
 
 ``` r
 # convert to abbreviations
