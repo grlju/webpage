@@ -189,7 +189,7 @@ g_names[, entity_type := str_squish(entity_type)]
 
 Third, we converted elements of names to standard abbreviations taken
 from CRSP abbreviations (I also have a post about how to get these
-\[here\]({{< ref "content/post/crspabb" >}}))
+\[here\]({{< ref "/opt/build/repo/content/post/crspabb" >}}))
 
 ``` r
 # convert to abbreviations
