@@ -5,9 +5,6 @@ date: "2021-11-29T00:00:00Z"
 draft: false
 featured: false
 lastmod: "2021-11-29T00:00:00Z"
-output:
-  md_document:
-    variant: markdown_github
 projects:
 - content/project/rmmc
 subtitle: An R package for calculating multimarket contact

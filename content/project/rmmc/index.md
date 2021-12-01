@@ -9,7 +9,7 @@ date: "2021-11-27T00:00:00Z"
 external_link: "https://github.com/grlju/rmmc"
 
 image:
-  caption: Photo by rawpixel on Unsplash
+  caption: Example of multimarket contact
   focal_point: Smart
 
 links:

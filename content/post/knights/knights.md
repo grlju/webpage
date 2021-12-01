@@ -7,7 +7,7 @@ featured: false
 image:
   placement: 2
   preview_only: false
-lastmod: "2021-11-30T00:00:00Z"
+lastmod: "2021-12-01T00:00:00Z"
 projects:
 - content/project/knights
 summary: Matching the Corporate Knights to WRDS can be tricky. This is a
@@ -44,10 +44,29 @@ my script
 
 ``` r
 require(readxl)
+```
+
+    ## Loading required package: readxl
+
+``` r
 require(data.table)
+```
+
+    ## Loading required package: data.table
+
+    ## data.table 1.14.2 using 4 threads (see ?getDTthreads).  Latest news: r-datatable.com
+
+``` r
 require(stringr)
+```
+
+    ## Loading required package: stringr
+
+``` r
 require(textclean)
 ```
+
+    ## Loading required package: textclean
 
 Let’s load the knights data first, if this is in your current working
 directory you can use replace the file name, if not you will have to
@@ -87,7 +106,7 @@ head(countries)
     ## 6:          Spain ESP
 
 ``` r
-# Merger countries back to the global100 data.table.
+# Merger countries back to the global100 data.table. 
 global100 <- countries[global100, on = "country"]
 ```
 
@@ -99,8 +118,8 @@ change over time (as do some identifiers, think CUSIP) but also because
 names may be written differently in different databases. To help with
 the matching we used the Compustat Global Names dataset (G_NAMES) and
 North American names (NAMES). I have another post of how to find an
-download this dataset \[here\]. Once we have this downloaded to our
-system we can load it.
+download this dataset [here](post\wrdsdown\wrdsdown). Once we have this
+downloaded to our system we can load it.
 
 ``` r
 g_names <- setDT(readRDS("G_NAMES2020.rda"))
@@ -129,7 +148,7 @@ standardization steps to the Knights and the WRDS dataset
 global100[, company_name_stnd := str_replace(company_name, "\\([^\\)]+\\)", " ")]
 # convert to uppercase as WRDS names are in upper case
 global100[, company_name_stnd := toupper(company_name_stnd)]
-# remove special characters ().,
+# remove special characters ()., 
 global100[, company_name_stnd := str_remove_all(company_name_stnd, "\\(|\\)|\\.|\\,")]
 # replace quotation marks
 global100[, company_name_stnd := str_replace_all(company_name_stnd, "\"", " ")]
@@ -142,7 +161,7 @@ global100[, company_name_stnd := str_squish(company_name_stnd)]
 g_names[, company_name_stnd := str_replace(conm, "\\([^\\)]+\\)", " ")]
 # convert to uppercase as WRDS names are in upper case
 g_names[, company_name_stnd := toupper(company_name_stnd)]
-# remove special characters ().,
+# remove special characters ()., 
 g_names[, company_name_stnd := str_remove_all(company_name_stnd, "\\(|\\)|\\.|\\,")]
 # replace quotation marks
 g_names[, company_name_stnd := str_replace_all(company_name_stnd, "\"", " ")]
@@ -151,8 +170,8 @@ g_names[, company_name_stnd := str_squish(company_name_stnd)]
 ```
 
 Second we extracted information about the type of entity it is (I have a
-post on getting entity types \[here\]), and removed this information
-from the name.
+post on getting entity types [here](/post/enttype/enttype)), and removed
+this information from the name.
 
 ``` r
 # extract entity type information
@@ -161,7 +180,7 @@ type <- readRDS("type.rda")
 # Knights
 # extract all entity types
 global100[, entity_type := list(str_extract_all(company_name_stnd, type))]
-# For some names multiple entity types are extracted (e.g. if the company name abbreviation matched and entity type), in this case use the last on as it is likely to be the actual abbreviation
+# For some names multiple entity types are extracted (e.g. if the company name abbreviation matched and entity type), in this case use the last on as it is likely to be the actual abbreviation 
 global100[, entity_type := sapply(entity_type, function(x) tail(x, 1))]
 # if not entity type is extracted it creates and empty character list, remove it
 global100[, entity_type1 := lapply(entity_type, unlist), by = 1:nrow(global100)][, entity_type := NULL]
@@ -175,7 +194,7 @@ global100[, entity_type := str_squish(entity_type)]
 # WRDS
 # extract all entity types
 g_names[, entity_type := list(str_extract_all(company_name_stnd, type))]
-# For some names multiple entity types are extracted (e.g. if the company name abbreviation matched and entity type), in this case use the last on as it is likely to be the actual abbreviation
+# For some names multiple entity types are extracted (e.g. if the company name abbreviation matched and entity type), in this case use the last on as it is likely to be the actual abbreviation 
 g_names[, entity_type := sapply(entity_type, function(x) tail(x, 1))]
 # if not entity type is extracted it creates and empty character list, remove it
 g_names[, entity_type1 := lapply(entity_type, unlist), by = 1:nrow(g_names)][, entity_type := NULL]
@@ -187,7 +206,7 @@ g_names[, company_name_stnd := str_squish(company_name_stnd)]
 g_names[, entity_type := str_squish(entity_type)]
 ```
 
-Third, we converted elements of names to standard abbreviations taken
+Third, I converted elements of names to standard abbreviations taken
 from CRSP abbreviations (I also have a post about how to get these
 [here](/post/crspabb/crspabb))
 
@@ -212,6 +231,11 @@ country.
 ``` r
 # Load the BRL package
 require(BRL)
+```
+
+    ## Loading required package: BRL
+
+``` r
 # create temporary data.tables with relevant information
 df1 <- unique(g_names[, .(company_name_stnd, entity_type, fic, gvkey)])
 df2 <- unique(global100[, .(company_name_stnd, entity_type, fic)])
@@ -254,17 +278,17 @@ the web) to account for name changes/M&A, etc.
 
 ``` r
 # keep working on the unmatched
-# create data.table with those global names that have not been matched. This can be used as a look up table in the manual matching. Often names are too dissimilar for the computer but a human can easily see the match.
+# create data.table with those global names that have not been matched. This can be used as a look up table in the manual matching. Often names are too dissimilar for the computer but a human can easily see the match. 
 unmatched_g <- df1[!gvkey %in% matched[, gvkey]]
 
-# create data.table of the unmatched so one can systematically work through all of them.
+# create data.table of the unmatched so one can systematically work through all of them. 
 unmatched <- df2[!company_name_stnd %in% matched[, company_name_stnd]]
 
-# create data.table of with matched and unmatched so found matches can be updated there.
+# create data.table of with matched and unmatched so found matches can be updated there. 
 fullmatch <- matched[df2, on = intersect(names(df2), names(matched))]
 
 # Manual matching
-fullmatch[company_name_stnd == "AEROPORTS DE PARIS", gvkey := "278142"]
+fullmatch[company_name_stnd == "AEROPORTS DE PARIS", gvkey := "278142"] 
 fullmatch[company_name_stnd == "AUSTRALIA & NEW ZEALD BKG GRP", gvkey := "015889"]
 fullmatch[company_name_stnd == "BIOGEN IDEC", gvkey := "024468"]
 # BIOGEN IDEC changed name to BIOGEN Inc
@@ -280,19 +304,17 @@ fullmatch[company_name_stnd == "ENCANA", gvkey := "011781"]
 fullmatch[company_name_stnd == "ESSILOR INTL", gvkey := "101248"]
 fullmatch[company_name_stnd == "FRAPORT AG FRANKFURT ARPT SVCS WORLDWIDE", gvkey := "245839"]
 fullmatch[company_name_stnd == "H & M HENNES & MAURITZ", gvkey := "102276"]
-fullmatch[company_name_stnd == "INDUSTRIA DE DISENO TEXTIL", gvkey := "245663"]
 fullmatch[company_name_stnd == "INGERSOLL-R&", gvkey := "030098"]
 fullmatch[company_name_stnd == "JOHNSON CTLS", gvkey := "006268"]
 fullmatch[company_name_stnd == "MCCORMICK &", gvkey := "007146"]
 fullmatch[company_name_stnd == "MERCK & CO", gvkey := "007257"]
 fullmatch[company_name_stnd == "METSO", gvkey := "339015"]
 fullmatch[company_name_stnd == "NATURA COSMETICOS", gvkey := "270509"]
-fullmatch[company_name_stnd == "NESTE", gvkey := "272746"]
 fullmatch[company_name_stnd == "NESTLE", gvkey := "016603"]
-fullmatch[company_name_stnd == "PNC FINL SVCS", gvkey := "008245"]
 fullmatch[company_name_stnd == "PEUGEOT", gvkey := "101276"]
 # Peugeot does no longer exists merger for Fiat Chrysler Automobiles and Peugeot (PSA Group) created Stellantis using gvkey for Stellantis
 # Fiat Chrysler Automobiles is still held under own gvkey. This also changed fic from France to Netherlands
+fullmatch[company_name_stnd == "PNC FINL SVCS", gvkey := "008245"]
 fullmatch[company_name_stnd == "ROYAL KPN", gvkey := "061440"]
 fullmatch[company_name_stnd == "SSE", gvkey := "103342"]
 fullmatch[company_name_stnd == "STATOIL", gvkey := "220546"]
@@ -301,10 +323,6 @@ fullmatch[company_name_stnd == "SVENSKA CELLULOSA SCA", gvkey := "012368"]
 fullmatch[company_name_stnd == "TAIWAN SEMICONDUCTOR", gvkey := "201395"]
 fullmatch[company_name_stnd == "UCB", gvkey := "100751"]
 fullmatch[company_name_stnd == "VMWARE", gvkey := "178083"]
-fullmatch[company_name_stnd == "ELECITE DE FRANCE", gvkey := "220920"]
-fullmatch[company_name_stnd == "ABERDEEN ASSET MGMT", gvkey := "278298"]
-fullmatch[company_name_stnd == "ALLERGAN", gvkey := "027845"]
-fullmatch[company_name_stnd == "TIM HORTONS", gvkey := "022402"]
 
 # merge back to the Knights data
 global100 <- fullmatch[global100, on = intersect(names(fullmatch), names(global100))]
